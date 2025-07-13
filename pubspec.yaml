@@ -2,6 +2,9 @@ name: dart_cli_chatai
 description: A CLI application Chat AI
 version: 1.0.0
 
+executables:
+  main: bin/dart_cli_chatai.dart
+
 environment:
   sdk: ^3.0.0
 

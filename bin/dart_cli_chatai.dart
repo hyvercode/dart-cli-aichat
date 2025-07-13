@@ -5,7 +5,9 @@ import 'package:http/http.dart' as http;
 import 'dart:io';
 import 'dart:convert';
 
-final env = DotEnv()..load(['../.env']);
+final envFile = File('.env');
+final env = DotEnv()..load([envFile.path]);
+
 const reset = '\x1B[0m';
 const blue = '\x1B[34m';
 const green = '\x1B[32m';
@@ -13,6 +15,11 @@ const gray = '\x1B[90m';
 const red = '\x1B[31m';
 
 void main() async {
+  if (!envFile.existsSync()) {
+    print('❌ .env file not found at ${envFile.path}');
+    exit(1);
+  }
+
   print('\n--- Dart CLI Chat with ${env['AI']}---');
   await shootEffect("Starting please wait ", 10);
   showMenu();
@@ -100,7 +107,6 @@ Future<void> generateContent() async {
 
       print('${red}🤖 AI:$green\n   $combinedResponse"\n');
       print('${gray}✨ Generating...$reset ✅ Done!"');
-      print('\n');
     } else {
       print("${reset}🚫 Error Request - ${response.statusCode}");
     }
