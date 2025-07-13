@@ -99,11 +99,10 @@ Future<void> generateContent() async {
       await spinnerTask;
 
       print('${red}🤖 AI:$green\n   $combinedResponse"\n');
+      print('${gray}✨ Generating...$reset ✅ Done!"');
       print('\n');
-      print('${gray}✨ Generating...$reset');
-      print("${reset}✅ Done!");
     } else {
-      print("${reset} Error Request - ${response.statusCode}");
+      print("${reset}🚫 Error Request - ${response.statusCode}");
     }
   } finally {
     client.close();
