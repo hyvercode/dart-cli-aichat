@@ -1,18 +1,18 @@
-class GeminiResponse {
+class AIResponse {
   final List<Candidate> candidates;
   final UsageMetadata usageMetadata;
   final String modelVersion;
   final String responseId;
 
-  GeminiResponse({
+  AIResponse({
     required this.candidates,
     required this.usageMetadata,
     required this.modelVersion,
     required this.responseId,
   });
 
-  factory GeminiResponse.fromJson(Map<String, dynamic> json) {
-    return GeminiResponse(
+  factory AIResponse.fromJson(Map<String, dynamic> json) {
+    return AIResponse(
       candidates: (json['candidates'] as List)
           .map((e) => Candidate.fromJson(e))
           .toList(),

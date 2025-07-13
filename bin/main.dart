@@ -1,4 +1,4 @@
-import 'package:dart_cli_chatai/models/gemini_response.dart';
+import 'package:dart_cli_chatai/models/ai_response.dart';
 import 'package:dart_cli_chatai/services/spinner_service.dart';
 import 'package:dotenv/dotenv.dart';
 import 'package:http/http.dart' as http;
@@ -20,7 +20,7 @@ void main() async {
 
 void showMenu() async {
   while (true) {
-    stdout.writeln('${reset} Press Enter to continue Chat or (q) to close: ');
+    stdout.write('${reset}\n Press Enter to continue Chat or (q) to close: ');
     final choice = stdin.readLineSync();
     if (choice == null || choice.isEmpty) {
       stdout.write('\x1B[2K\r');
@@ -35,7 +35,7 @@ void showMenu() async {
 }
 
 Future<void> generateContent() async {
-  stdout.write('${blue}👤 Prompt:$green\n   ');
+  stdout.write('\n${blue}👤 Prompt:$green\n   ');
   final prompt = stdin.readLineSync() ?? '';
 
   if (prompt.trim().isEmpty) {
@@ -79,8 +79,8 @@ Future<void> generateContent() async {
 
     List<dynamic> decoded = jsonDecode(response.body);
 
-    List<GeminiResponse> responses = decoded
-        .map((e) => GeminiResponse.fromJson(e as Map<String, dynamic>))
+    List<AIResponse> responses = decoded
+        .map((e) => AIResponse.fromJson(e as Map<String, dynamic>))
         .toList();
 
     if (response.statusCode == 200) {
