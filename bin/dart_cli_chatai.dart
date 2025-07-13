@@ -29,11 +29,13 @@ void showMenu() async {
   while (true) {
     stdout.write('${reset}\n Press Enter to continue Chat or (q) to close: ');
     final choice = stdin.readLineSync();
+    stdout.write('\x1B[2K\r');
     if (choice == null || choice.isEmpty) {
       stdout.write('\x1B[2K\r');
       await generateContent();
     } else if (choice.toLowerCase() == 'q') {
-      print("${reset}👋 Exiting... Credit by hyvercode.com");
+      print("\n ${reset}👋 Exiting...");
+      print("\n--- credit by hyvercode.com ---");
       exit(0);
     } else {
       print("${reset}❌ Invalid input. Press Enter or type 'q'.");

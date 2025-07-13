@@ -328,7 +328,5 @@
   ],
   "generator": "pub",
   "generatorVersion": "3.8.1",
-  "flutterRoot": "file:///home/hyvercode/flutter",
-  "flutterVersion": "3.32.4",
   "pubCache": "file:///home/hyvercode/.pub-cache"
 }
